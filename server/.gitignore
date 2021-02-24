@@ -1,0 +1,9 @@
+node_modules
+.env
+firebase
+/firebase
+.index.js
+.index
+/firebase/index
+/config
+config
