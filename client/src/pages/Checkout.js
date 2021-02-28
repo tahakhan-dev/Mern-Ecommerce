@@ -12,14 +12,9 @@ import {
   saveUserLocation,
   saveUserEmail,
 } from "../functions/user";
-import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { Input, Steps } from "antd";
-import {
-  UserOutlined,
-  NumberOutlined,
-  LineHeightOutlined,
-} from "@ant-design/icons";
+import { UserOutlined, NumberOutlined } from "@ant-design/icons";
 import AnimatedBg from "react-animated-bg";
 
 const { TextArea } = Input;

@@ -4,11 +4,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { createPaymentIntent } from "../functions/stripe";
 import { Link } from "react-router-dom";
 import { Card } from "antd";
-import { DollarOutlined, CheckOutlined, SwapOutlined } from "@ant-design/icons";
+import { DollarOutlined, CheckOutlined } from "@ant-design/icons";
 import Laptop from "../images/laptop.png";
 import { createOrder, emptyUserCart } from "../functions/user";
 
-const StripeCheckout = ({ history }) => {
+const StripeCheckout = () => {
   const dispatch = useDispatch();
   const { user, coupon } = useSelector((state) => ({ ...state }));
 
@@ -21,12 +21,9 @@ const StripeCheckout = ({ history }) => {
   const [cartTotal, setCartTotal] = useState(0);
   const [totalAfterDiscount, setTotalAfterDiscount] = useState(0);
   const [payable, setPayable] = useState(0);
-  const [userthing, setUserThing] = useState({});
 
   const stripe = useStripe();
   const elements = useElements();
-
-  console.log(userthing);
 
   useEffect(() => {
     createPaymentIntent(user.token, coupon).then((res) => {
@@ -125,6 +122,7 @@ const StripeCheckout = ({ history }) => {
           cover={
             <img
               src={Laptop}
+              alt=""
               style={{
                 height: "200px",
                 objectFit: "cover",

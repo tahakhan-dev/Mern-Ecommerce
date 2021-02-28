@@ -3,6 +3,7 @@ import { getProducts } from "../../functions/product";
 import ProductCard from "../cards/ProductCard";
 import LoadingCard from "../cards/LoadingCard";
 import Paginator from "react-hooks-paginator";
+import { useDispatch } from "react-redux";
 
 const NewArrivals = () => {
   const [products, setProducts] = useState([]); // aik se zyada product ho sakte han jbhi array use keya hai "useEffect" me
@@ -14,6 +15,8 @@ const NewArrivals = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [currentData, setCurrentData] = useState([]);
 
+  const dispatch = useDispatch();
+
   useEffect(() => {
     let isMounted = true;
     setLoading(true);
@@ -22,6 +25,10 @@ const NewArrivals = () => {
 
       setProducts(response.data);
       setLoading(false);
+      dispatch({
+        type: "SEARCH_QUERY",
+        payload: { text: "" },
+      });
     });
 
     return () => (isMounted = false);
@@ -30,17 +37,6 @@ const NewArrivals = () => {
   useEffect(() => {
     setCurrentData(products.slice(offset, offset + pageLimit));
   }, [offset, products]);
-
-  // // console.log(products.length);
-  // const loadAllProducts = () => {
-  //   setLoading(true);
-  //   // sort, order, limit
-  //   getProducts("createdAt", "desc").then((res) => {
-  //     // product get kr rahai han according to sorting mtlb sort karo "desc" createdAt pe
-  //     setProducts(res.data); // kitna product mangwana hai mtlb aik page pe kitne product show krne hai uske according
-  //     setLoading(false);
-  //   });
-  // };
 
   return (
     <>

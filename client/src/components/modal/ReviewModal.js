@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { Modal, Comment, Avatar, Rate, Pagination } from "antd";
-import { toast } from "react-toastify";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useState } from "react";
+import { Modal, Avatar, Rate, Pagination } from "antd";
+import { useDispatch } from "react-redux";
 import { ReadOutlined } from "@ant-design/icons";
-import { useHistory, useParams } from "react-router-dom";
-import { LikeOutlined, UserOutlined } from "@ant-design/icons";
-import { getProductReviewAndRating } from "../../functions/product";
+import { UserOutlined } from "@ant-design/icons";
 import Loading from "../routes/Comment";
 
 var _ = require("lodash");
@@ -13,7 +10,6 @@ var _ = require("lodash");
 const desc = ["terrible", "bad", "normal", "good", "wonderful"];
 
 const ReviewModal = ({ product }) => {
-  const { user, Modals } = useSelector((state) => ({ ...state }));
   const dispatch = useDispatch();
   const [modalVisible, setModalVisible] = useState(false);
   const [page, setPage] = useState(1);
@@ -34,6 +30,8 @@ const ReviewModal = ({ product }) => {
       End: end,
     };
   }
+
+  console.log(comments);
 
   if (ratings && reviews) {
     objectLength = Object.keys(reviews).length;

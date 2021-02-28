@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, Button, Input } from "antd";
+import { Modal, Input } from "antd";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import { StarOutlined } from "@ant-design/icons";
@@ -41,7 +41,7 @@ const RatingModal = ({
       ) : (
         <div>
           <div onClick={handleModal}>
-            <StarOutlined className="text-danger"  /> <br />{" "}
+            <StarOutlined className="text-danger" /> <br />{" "}
             {user ? "Leave rating" : "Login to leave rating"}
           </div>
           <Modal

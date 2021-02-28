@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Jumbotron from "../components/cards/Jumbotron";
 import NewArrivals from "../components/home/NewArrivals";
 import BestSellers from "../components/home/BestSellers";
@@ -8,20 +8,10 @@ import TextLoop from "react-text-loop";
 import { Parallax } from "react-parallax";
 import AnimatedBg from "react-animated-bg";
 import { Random } from "react-animated-text";
-import { useDispatch } from "react-redux";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 
 const Home = () => {
-  let dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch({
-      type: "SEARCH_QUERY",
-      payload: { text: "" },
-    });
-  }, []);
-
   // const slideImages = [
   //   'images/slide_2.jpg',
   //   'images/slide_3.jpg',
@@ -35,9 +25,7 @@ const Home = () => {
     infinite: true,
     easing: "ease",
     arrows: true,
-    onChange: (oldIndex, newIndex) => {
-      console.log(`slide transition from ${oldIndex} to ${newIndex}`);
-    },
+    onChange: (oldIndex, newIndex) => {},
   };
 
   const slideImages = [
@@ -45,12 +33,6 @@ const Home = () => {
     "https://picsum.photos/800/301/?random",
     "https://picsum.photos/800/302/?random",
   ];
-
-  const config = {
-    itemSize: "10em", // Standard is 50px, unit may vary
-    design: "flat", //standard is none, 'flat' is alternative
-    scaleFactor: 2, // standard is 1.1, can be changed
-  };
 
   const styles = {
     fontFamily: "sans-serif",
@@ -68,10 +50,6 @@ const Home = () => {
     "https://images.unsplash.com/photo-1498092651296-641e88c3b057?auto=format&fit=crop&w=1778&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D";
   const image2 =
     "https://img00.deviantart.net/2bd0/i/2009/276/c/9/magic_forrest_wallpaper_by_goergen.jpg";
-  const image3 =
-    "https://brightcove04pmdo-a.akamaihd.net/5104226627001/5104226627001_5297440765001_5280261645001-vs.jpg?pubId=5104226627001&videoId=5280261645001";
-  const image4 =
-    "https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/empire-state-building-black-and-white-square-format-john-farnan.jpg";
 
   const imagesList = ['url("https://wallpaperaccess.com/full/2478733.jpg")'];
 
@@ -85,7 +63,12 @@ const Home = () => {
           timingFunction="ease-out"
           className="animated-section animated-images"
         >
-          <div className="jumbotron text-danger   h1 font-weight-bold text-center">
+          <div
+            className="jumbotron text-danger   h1 font-weight-bold text-center"
+            style={{
+              background: "linear-gradient(315deg, #7f5a83 0%, #0d324d 74%)",
+            }}
+          >
             {/* humne jumbotron ka "jumbotron effect" uthaya wa hai toh hum value pass kr rahai han jumbotron me */}
             <Jumbotron
               text={[
@@ -115,7 +98,13 @@ const Home = () => {
               </div>
             </Slide>
           </div>
-          <h2 className="text-center p-3 mt-5 mb-5 display-4 jumbotron">
+          <h2
+            className="text-center p-3 mt-5 mb-5 display-4 jumbotron"
+            style={{
+              background:
+                "linear-gradient(315deg, rgb(73 130 147 / 64%) 0%, rgb(217 167 167 / 58%) 74%)",
+            }}
+          >
             Product Categories
             <TextLoop springConfig={{ stiffness: 60, damping: 5 }}>
               {[
@@ -142,7 +131,13 @@ const Home = () => {
             </Parallax>
           </div>
 
-          <h4 className="text-center p-3 mt-5 mb-5 display-4 jumbotron">
+          <h4
+            className="text-center p-3 mt-5 mb-5 display-4 jumbotron"
+            style={{
+              background:
+                "linear-gradient(315deg, rgb(73 130 147 / 64%) 0%, rgb(217 167 167 / 58%) 74%)",
+            }}
+          >
             <Random
               text="N e w   A r r i v a l s !"
               effect="pop"
@@ -152,7 +147,13 @@ const Home = () => {
           </h4>
           <NewArrivals />
           {/* yeh hum component istamal kr rahai han "newArrival" ka */}
-          <h4 className="text-center p-3 mt-5 mb-5 display-4 jumbotron">
+          <h4
+            className="text-center p-3 mt-5 mb-5 display-4 jumbotron"
+            style={{
+              background:
+                "linear-gradient(315deg, rgb(73 130 147 / 64%) 0%, rgb(217 167 167 / 58%) 74%)",
+            }}
+          >
             <Random
               text="B e s t   S e l l e r s  !"
               effect="pop"

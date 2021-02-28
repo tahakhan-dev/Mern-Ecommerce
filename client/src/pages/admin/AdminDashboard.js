@@ -36,11 +36,15 @@ const AdminDashboard = () => {
     getOrderCount(user.token).then((res) => setProductsCount(res.data)); // jitna bhi product hoga uska count ajae ga  for example 20 ya 30 istarha
   }, []);
 
-  const loadOrders = () =>
+  const loadOrders = () => {
+    let ismounted = true;
     getOrders(user.token, page).then((res) => {
+      if (!ismounted) return;
       console.log(JSON.stringify(res.data, null, 4));
       setOrders(res.data);
     });
+    return () => (ismounted = false);
+  };
 
   const handleStatusChange = (orderId, orderStatus) => {
     changeStatus(orderId, orderStatus, user.token).then((res) => {
